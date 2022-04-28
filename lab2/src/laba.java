@@ -1,3 +1,4 @@
+
 import javax.swing.table.DefaultTableModel;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
@@ -229,9 +230,9 @@ public class ExceptionZnach extends Exception {
                     Recintegral.add(jTextField1.getText());
                     Recintegral.add(jTextField2.getText());
                     Recintegral.add(jTextField3.getText());
-                    jTextField1.setText("");
-                    jTextField2.setText("");
-                    jTextField3.setText("");
+//                    jTextField1.setText("");
+//                    jTextField2.setText("");
+//                    jTextField3.setText("");
                   }
                   else 
                   {

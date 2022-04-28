@@ -213,32 +213,29 @@ public class ExceptionZnach extends Exception {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+       DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 //       model.addRow( new Object[]{jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), "0.0"});
-        try{   
-                  String _field1 = jTextField1.getText();
-                  String _field2 = jTextField2.getText();
-                  String _field3 = jTextField3.getText();
-                 
-                  double field1 = Double.parseDouble(_field1);
-                  double field2 = Double.parseDouble(_field2);
-                  double field3 = Double.parseDouble(_field3);
-                  if (((0.000001 < field1 )&(field1 < 1000000))&((0.000001 < field2 )&(field2 < 1000000))&((0.000001 < field3 )&(field3 < 1000000)))
-                  {
-                    model.addRow( new Object[]{jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), "0.0"});
-                    Recintegral.add(jTextField1.getText());
-                    Recintegral.add(jTextField2.getText());
-                    Recintegral.add(jTextField3.getText());
-                    jTextField1.setText("");
-                    jTextField2.setText("");
-                    jTextField3.setText("");
-                  }
-                  else 
-                  {
-                    throw new ExceptionZnach("Вы ввели числа отличные от диапазона  0,000001 - 1000000");  
-                  }
+       try{
+           double bottomBorder = Double.parseDouble(jTextField1.getText());
+           double topBorder = Double.parseDouble(jTextField2.getText());
+           double step = Double.parseDouble(jTextField3.getText());
+                 if ((topBorder - bottomBorder)>step)
+               {
+                   if (((0.000001 < bottomBorder)&(bottomBorder < 1000000))&((0.000001 < topBorder )&(topBorder < 1000000))&((0.000001 < step )&(step < 1000000)))
+                   {
+                        model.addRow( new Object[]{jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), "0.0"});
+                        Recintegral.add(jTextField1.getText());
+                        Recintegral.add(jTextField2.getText());
+                        Recintegral.add(jTextField3.getText());
+                        jTextField1.setText("");
+                        jTextField2.setText("");
+                        jTextField3.setText("");
+                    }
+                    else {throw new ExceptionZnach("Вы ввели числа отличные от диапазона  0,000001 - 1000000");}
+               }else {throw new ExceptionZnach("Разница верхней и нижней границы меньше шага");}
                
                  } catch(ExceptionZnach e){}
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
    
